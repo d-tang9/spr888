@@ -7,29 +7,28 @@ if [[ ! -d "$SEARCH_DIR" ]]; then
   exit 1
 fi
 
-# Temporary storage for results
 TMP_FILE=$(mktemp)
 
-# Scan each file for FLAG_PART_X{...}
+echo "[*] Scanning for flag fragments..."
+
+# Match full pattern like: FLAG_PART_3{a}
 for file in "$SEARCH_DIR"/*; do
-    grep -oP 'FLAG_PART_\d+\{\K[^}]+' "$file" 2>/dev/null | while read -r value; do
-        part=$(grep -oP 'FLAG_PART_\d+' "$file" | grep -oP '\d+')
-        if [[ $part =~ ^[0-9]+$ ]]; then
-            echo "$part:$value" >> "$TMP_FILE"
-        fi
-    done
+  grep -aPo 'FLAG_PART_\d+\{[^}]+\}' "$file" 2>/dev/null | while read -r match; do
+    part_num=$(echo "$match" | grep -oP 'FLAG_PART_\K\d+')
+    char=$(echo "$match" | grep -oP '\{[^}]+\}' | tr -d '{}')
+    echo "$part_num:$char" >> "$TMP_FILE"
+  done
 done
 
-# Check results
 if [[ ! -s "$TMP_FILE" ]]; then
-    echo "[✗] No flag parts found."
-    rm "$TMP_FILE"
-    exit 1
+  echo "[✗] No flag fragments found."
+  rm "$TMP_FILE"
+  exit 1
 fi
 
 echo "[✓] Found flag parts:"
-sort -n "$TMP_FILE" | uniq | while IFS=: read -r part value; do
-    echo "Part $part = $value"
+sort -n "$TMP_FILE" | uniq | while IFS=: read -r part char; do
+  echo "Part $part = $char"
 done
 
 # Reconstruct the flag
