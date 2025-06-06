@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# === Configuration ===
-DEST_DIR="/home/ctfplayer/noise"
-TOTAL_FILES=50
+DEST_DIR="/home/dtang/Desktop/spr888/challenges/dickson/challenge2/files"
+TOTAL_FILES=100
 FLAG_PARTS=10
-FULL_FLAG="capturetheflag"  # Must be 10 characters
-RANDOM_CHARS=3000           # Size of noise per file
+FULL_FLAG="congrats!!"
+RANDOM_CHARS=4000
 
-# === Setup ===
 mkdir -p "$DEST_DIR"
 rm -f "$DEST_DIR"/* 2>/dev/null
 

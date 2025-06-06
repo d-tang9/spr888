@@ -1,0 +1,6 @@
+base64 < /dev/urandom | head -c12
+sIMku8/W8MDG
+echo "flag{sIMku8/W8MDG}" > flag.txt
+zip -e flag.zip flag.txt
+lol123
+chmod 444 flag.zip
