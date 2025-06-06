@@ -20,15 +20,12 @@ def find_fragments(directory):
                 print(f"Could not read {filepath}: {e}")
 
     if fragments:
-        print(f"[✓] Found {len(fragments)} flag parts")
+        print(f"[+] Found {len(fragments)} flag parts")
         full_flag = ''.join(fragments[k] for k in sorted(fragments))
-        print(f"🏁 Full Flag: FLAG{{{full_flag}}}")
+        print(f"Full Flag: FLAG{{{full_flag}}}")
     else:
-        print("[✗] No flag fragments found.")
+        print("[-] No flag fragments found.")
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) != 2:
-        print("Usage: python3 find_flag_fragments.py /path/to/search")
-    else:
-        find_fragments(sys.argv[1])
+    find_fragments(sys.argv[1])
