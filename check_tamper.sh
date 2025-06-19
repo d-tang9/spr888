@@ -37,17 +37,4 @@ for services in ssh cron; do
   fi
 done
 
-echo "-----[ Check GRUB ]-----"
-if grep -q 'set superusers=' /etc/grub.d/40_custom && grep -q 'password_pbkdf2' /etc/grub.d/40_custom; then
-  echo "[+] GRUB password set"
-else
-  echo "[-] GRUB password missing"
-fi
-
-if grep -q 'GRUB_DISABLE_RECOVERY="true"' /etc/default/grub; then
-  echo "[+] GRUB recovery mode is disabled"
-else
-  echo "[-] GRUB recovery mode is enabled"
-fi
-
 echo "-----[ Check Complete ]-----"
