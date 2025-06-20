@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  challenge1:
+    image: dtang-challenge1
+    container_name: challenge1dt
+    stdin_open: true
+    tty: true
+    security_opt:
+      - "no-new-privileges=true"
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp

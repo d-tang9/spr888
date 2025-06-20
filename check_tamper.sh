@@ -19,7 +19,7 @@ FILE="/home/ctfplayer/docker-compose.yml"
 if [ -e "$FILE" ]; then
   OWNER=$(stat -c '%U' "$FILE")
   PERMISSION=$(stat -c '%a' "$FILE")
-  if [ "$OWNER" = "root" ] && [ "$PERMISSION" = "700" ]; then
+  if [ "$OWNER" = "root" ] && [ "$PERMISSION" = "644" ]; then
     echo "[+] docker-compose tamper proof"
   else
     echo "[-] docker-compose needs new permission"]
