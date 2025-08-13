@@ -29,7 +29,7 @@ fetch_page() {
 }
 
 parse_names() {
-  # Read JSON on stdin and print repository names (one per line)
+  # Print repository names
   if $have_jq; then
     jq -r '.results[].name'
   elif $have_python; then
