@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ===== CONFIG =====
 NAMESPACE="${NAMESPACE:-dtang9}"        # Docker Hub namespace
-FILTER_PREFIX="${FILTER_PREFIX:-challenge}"  # Only repos starting with this prefix
+FILTER_PREFIX="${FILTER_PREFIX:-ctf}"  # Only repos starting with this prefix
 PAGE_SIZE="${PAGE_SIZE:-100}"           # Adjust if you expect >100 repos
 DEFAULT_TAG="${DEFAULT_TAG:-latest}"    # Tag to run
 
