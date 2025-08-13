@@ -113,7 +113,7 @@ run_challenge() {
   fi
 
   echo "Starting container: ${cname}"
-  docker run -d --name "$cname" "${image}" >/dev/null
+  docker run -d --name "$cname" --security-opt no-new-privileges:true "$image" >/dev/null
 
   echo
   echo "${repo} is up. Here are useful commands:"
