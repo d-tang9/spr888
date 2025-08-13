@@ -116,7 +116,7 @@ run_challenge() {
   docker run -d --name "$cname" "${image}" >/dev/null
 
   echo
-  echo "✅ ${repo} is up. Here are useful commands:"
+  echo "${repo} is up. Here are useful commands:"
   cat <<EOF
   # See it running
   docker ps --filter name=${cname}
